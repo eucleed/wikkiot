@@ -4,11 +4,19 @@ The wikkiot API is a service that allows devices equipped with a microcontroller
 
 The framework addresses the following issue:
 When building inter object communication systems , there are 2 types of implementations.
-1.	Building the objects i.e. devices.
-2.	Implement the interactions between the objects.
+* Building the objects i.e. devices.
+* Implement the interactions between the objects.
 
 The framework has been designed in such a way so as to allow the object builder have complete abstraction on the interaction builder and vice versa.
-To achieve this, we use a device definition.
+To achieve this, we use a [device definition](https://github.com/eucleed/wikkiot/wiki/Device-Definition).
+
+
+#####The device definition emulator.
+As wikkiot programmer will probably not already have the physical device before hand. We provide an online device definition emulator.  This is a convenient tool to build interactions and test them until the physical device is ready.
+
+The emulator does the following:
+* Logs functions being invoked
+* Provides buttons to emit events specified in the device definition.
 
 
 
