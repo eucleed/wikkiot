@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:lang="http://www.springframework.org/schema/lang"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-2.0.xsd">
+
+	<!-- Default configuration A memory implementation of device store. This 
+		simple implementation stores all connected devices in memory. This implementation 
+		is ok for domestic purposes. However, it is recommended to implement a more 
+		robust implementation for industrial purposes where it is expecting thousand 
+		of devices -->
+
+
+	<bean class="org.castafiore.iot.MemoryDefinitionRegistry"></bean>
+
+	<!-- The generic device registry offers a simple implementation of DeviceRegistry. The persistence of a device is delegated to the persistent store -->
+	<bean id="deviceRegistry" class="org.castafiore.iot.websocket.GenericDeviceRegistry">
+	</bean>
+
+	<!-- Simple IOTApplet see samples for more details -->
+	<bean class="org.castafiore.iot.sample.RemoteControlApplet">
+		<property name="registry" ref="deviceRegistry"></property>
+	</bean>
+	
+	
+	<!-- Castafiore application for displaying connected devices -->
+	<bean class="org.castafiore.iot.admin.AdminPanel" id="admin" scope="session"></bean>
+	
+	
+	<bean class="org.castafiore.iot.builder.Builder" id="builder" scope="session"></bean>
+	
+	<!-- 
+	
+	<bean class="org.castafiore.iot.builder.protocols.BuilderRegistry">
+		<property name="deviceStore">	
+			<bean class="org.castafiore.iot.MemoryDeviceStore" scope="session"></bean>
+		</property>
+		<property name="application">
+			<bean class="org.castafiore.iot.builder.json.Application">
+			</bean>
+		</property>
+	</bean>
+	 -->
+</beans>
