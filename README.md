@@ -42,7 +42,7 @@ Check if server is running http://localhost:8080/wikkiot
 
 ```
 
-
+Get your hands wet with the [Tutorial](https://github.com/eucleed/wikkiot/wiki/Tutorial)
 
 
 
